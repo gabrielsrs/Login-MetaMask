@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login MetaMask</title>
+ <style>
+   body {
+   display: flex;
+   align-items: CENTER;
+   justify-content: CENTER;
+   width: 100vw;
+   height: 100vh;
+   background-color: #2e1fa1;
+   overflow: hidden;
+   flex-direction: column;
+  }
+
+  .normal {
+   display: flex;
+   padding: 10px;
+   background-color: purple;
+   cursor: pointer;
+   border: none;
+   border-radius: 3px;
+  }
+
+  .off {
+   display: flex;
+   padding: 10px;
+   background-color: rgb(139, 134, 139);
+   cursor: pointer;
+   border: none;
+   border-radius: 3px;
+   cursor: not-allowed;
+  }
+
+  p {
+   color: #ffff;
+   font-size: 15px;
+  }
+
+ </style>
+</head>
+<body>
+ <button id="loginButton" class="normal" onClick="">
+  Login MetaMask
+ </button>
+
+ <p id="response"></p>
+
+ <script>
+  const loginButton = document.querySelector("#loginButton")
+  const response = document.querySelector("#response")
+
+  function extensionCheck() {
+   if (!window.ethereum) {
+    loginButton.innerText = "MateMask is not installed"
+    loginButton.classList.remove("normal")
+    loginButton.classList.add("off")
+   }
+  };
+
+  loginButton.addEventListener('click', loginMetaMask);
+  
+  async function loginMetaMask() {
+   const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+   .catch((res) => {
+    response.innerText = res.message
+   });
+
+   response.innerText = accounts[0]
+
+   if (accounts) {
+    loginButton.innerText = "MateMask Already logged"
+    loginButton.classList.remove("normal")
+    loginButton.classList.add("off")
+   }
+  };
+   
+   window.addEventListener("DOMContentLoaded", () => {
+   extensionCheck()
+  });
+ </script>
+</body>
+</html>
