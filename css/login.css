@@ -1,0 +1,17 @@
+.login-btn {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.login-metamask-button {
+    background-color: #f6851b;
+}
+
+.login-phantom-button {
+    background-color: #ab9ff2;
+}

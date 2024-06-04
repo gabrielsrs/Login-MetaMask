@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    align-items: CENTER;
+    justify-content: CENTER;
+    width: 100vw;
+    height: 100vh;
+    background-color: #48416a;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.off {
+    background-color: rgb(139, 134, 139);
+    cursor: not-allowed;
+}
+
+p {
+    color: #ffff;
+    font-size: 15px;
+}
